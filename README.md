@@ -22,6 +22,30 @@
 
 <br />
 
+## 使用
+
+### 安装
+
+```shell
+deno install --allow-env --allow-read --allow-write --unstable -rfn mcache https://deno.land/x/mcache/mod.ts
+```
+
+### 检索缓存
+
+```shell
+mcache --look
+```
+
+### 清理缓存
+
+> 清理缓存需要先检索缓存，并生成临时文件
+
+```shell
+mcache --look --clear
+```
+
+<br />
+
 ## License
 
 Made with [markthree](https://github.com/markthree)

@@ -9,7 +9,7 @@ export async function clear() {
   if (!(await exist(TEMP_CACHE))) {
     console.log();
     throw new Deno.errors.NotFound(
-      `${red(TEMP_CACHE)} 不存在，请先执行 ${cyan("look")}`,
+      `${red(TEMP_CACHE)} 不存在，请先执行 ${cyan("look")} 检索`,
     );
   }
 
