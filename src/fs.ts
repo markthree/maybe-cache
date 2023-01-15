@@ -1,6 +1,6 @@
 import { slash } from "./path.ts";
 import { walk } from "https://deno.land/std@0.172.0/fs/walk.ts";
-import { gray } from "https://deno.land/std@0.170.0/fmt/colors.ts";
+import { gray } from "https://deno.land/std@0.172.0/fmt/colors.ts";
 import type { WalkOptions } from "https://deno.land/std@0.172.0/fs/walk.ts";
 import { prettyBytes } from "https://deno.land/x/pretty_bytes@v2.0.0/mod.ts";
 

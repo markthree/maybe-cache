@@ -7,7 +7,7 @@ import { prettyBytes } from "https://deno.land/x/pretty_bytes@v2.0.0/mod.ts";
 import {
   brightYellow,
   green,
-} from "https://deno.land/std@0.170.0/fmt/colors.ts";
+} from "https://deno.land/std@0.172.0/fmt/colors.ts";
 
 export function lookMayBeCacheDirs(
   root: string,

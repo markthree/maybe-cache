@@ -3,7 +3,7 @@ import type { IDir } from "./fs.ts";
 import { TEMP_CACHE } from "./constant.ts";
 import { createTotal, normalizeTotalString } from "./look.ts";
 import { emptyDir } from "https://deno.land/std@0.172.0/fs/mod.ts";
-import { cyan, green, red } from "https://deno.land/std@0.170.0/fmt/colors.ts";
+import { cyan, green, red } from "https://deno.land/std@0.172.0/fmt/colors.ts";
 
 export async function clear() {
   if (!(await exist(TEMP_CACHE))) {
@@ -47,6 +47,6 @@ export async function clear() {
   }
 }
 
-if (import.meta.url) {
+if (import.meta.main) {
   await clear();
 }
