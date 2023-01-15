@@ -1,15 +1,15 @@
-import { cyan, green, red } from "https://deno.land/std@0.170.0/fmt/colors.ts";
 import { exist } from "./fs.ts";
 import type { IDir } from "./fs.ts";
 import { TEMP_CACHE } from "./constant.ts";
-import { emptyDir } from "https://deno.land/std@0.172.0/fs/mod.ts";
 import { createTotal, normalizeTotalString } from "./look.ts";
+import { emptyDir } from "https://deno.land/std@0.172.0/fs/mod.ts";
+import { cyan, green, red } from "https://deno.land/std@0.170.0/fmt/colors.ts";
 
-if (import.meta.url) {
+export async function clear() {
   if (!(await exist(TEMP_CACHE))) {
     console.log();
     throw new Deno.errors.NotFound(
-      `${red(TEMP_CACHE)} 不存在，请先执行 ${cyan("deno task look")}`,
+      `${red(TEMP_CACHE)} 不存在，请先执行 ${cyan("look")}`,
     );
   }
 
@@ -45,4 +45,8 @@ if (import.meta.url) {
       green(normalizeTotalString(successTotal)),
     );
   }
+}
+
+if (import.meta.url) {
+  await clear();
 }

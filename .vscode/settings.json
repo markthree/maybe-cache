@@ -1,6 +1,5 @@
 {
 	"deno.enable": true,
-	// "deno.enablePaths": [],
 	"json.schemas": [
 		{
 			"url": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",

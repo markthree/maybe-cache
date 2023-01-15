@@ -18,7 +18,7 @@ export async function exist(path: string) {
 
 export type ExtendWalkOptions = { log?: boolean; size?: boolean };
 
-type WalkFindMayBeCacheDirsOptions = WalkOptions & ExtendWalkOptions;
+export type WalkFindMayBeCacheDirsOptions = WalkOptions & ExtendWalkOptions;
 
 export interface IDir {
   name: string;

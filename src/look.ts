@@ -24,7 +24,7 @@ export function lookMayBeCacheDirs(
   });
 }
 
-if (import.meta.main) {
+export async function look() {
   const APP_DATA_PATH = findkHomeAppDataDir();
 
   const dirs = await lookMayBeCacheDirs(APP_DATA_PATH, {
@@ -62,7 +62,7 @@ if (import.meta.main) {
   }
 }
 
-interface ITotal {
+export interface ITotal {
   size: number;
   length: number;
   bytes: string;
@@ -85,4 +85,8 @@ export function createTotal(dirs: IDir[]) {
 
 export function normalizeTotalString(total: ITotal) {
   return JSON.stringify(total).replace(/[{}'"]/g, "").replace(/,/g, " ");
+}
+
+if (import.meta.main) {
+  await look();
 }
