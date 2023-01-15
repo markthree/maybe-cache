@@ -3,11 +3,9 @@ export * from "./src/look.ts";
 export * from "./src/path.ts";
 export * from "./src/clear.ts";
 export * from "./src/constant.ts";
-export { look } from "./src/look.ts";
-import { clear } from "./src/clear.ts";
-
-import { parse } from "https://deno.land/std@0.172.0/flags/mod.ts";
 import { look } from "./src/look.ts";
+import { clear } from "./src/clear.ts";
+import { parse } from "https://deno.land/std@0.172.0/flags/mod.ts";
 
 if (import.meta.main) {
   const args = parse(Deno.args, {
