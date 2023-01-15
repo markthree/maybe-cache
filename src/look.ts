@@ -1,17 +1,13 @@
-import { prettyBytes } from "https://deno.land/x/pretty_bytes@v2.0.0/mod.ts";
-import type { ExtendWalkOptions, IDir } from "./fs.ts";
+import { TEMP_CACHE } from "./constant.ts";
+import { findkHomeAppDataDir } from "./path.ts";
 import { walkFindMayBeCacheDirs } from "./fs.ts";
-import { findkHomeAppDataDir, slash } from "./path.ts";
-import { fromFileUrl } from "https://deno.land/std@0.172.0/path/mod.ts";
+import type { ExtendWalkOptions, IDir } from "./fs.ts";
 import { ensureDir } from "https://deno.land/std@0.172.0/fs/ensure_dir.ts";
+import { prettyBytes } from "https://deno.land/x/pretty_bytes@v2.0.0/mod.ts";
 import {
   brightYellow,
   green,
 } from "https://deno.land/std@0.170.0/fmt/colors.ts";
-
-const TEMP_CACHE = slash(
-  fromFileUrl(import.meta.resolve("../temp/cache.json")),
-);
 
 export function lookMayBeCacheDirs(
   root: string,
@@ -44,7 +40,7 @@ if (import.meta.main) {
     console.log(
       `🥵 total -> ${
         brightYellow(
-          JSON.stringify(total).replace(/[{}'"]/g, "").replace(/,/g, " "),
+          normalizeTotalString(total),
         )
       }`,
     );
@@ -65,10 +61,16 @@ if (import.meta.main) {
   }
 }
 
-function createTotal(dirs: IDir[]) {
+interface ITotal {
+  size: number;
+  length: number;
+  bytes: string;
+}
+
+export function createTotal(dirs: IDir[]) {
   const total = {
     length: dirs.length,
-  } as { size: number; length: number; bytes: string };
+  } as ITotal;
 
   total.size = dirs.reduce((size, dir) => {
     size += dir.size ?? 0;
@@ -78,4 +80,8 @@ function createTotal(dirs: IDir[]) {
   total.bytes = prettyBytes(total.size);
 
   return total;
+}
+
+export function normalizeTotalString(total: ITotal) {
+  return JSON.stringify(total).replace(/[{}'"]/g, "").replace(/,/g, " ");
 }

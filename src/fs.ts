@@ -4,6 +4,18 @@ import { gray } from "https://deno.land/std@0.170.0/fmt/colors.ts";
 import type { WalkOptions } from "https://deno.land/std@0.172.0/fs/walk.ts";
 import { prettyBytes } from "https://deno.land/x/pretty_bytes@v2.0.0/mod.ts";
 
+export async function exist(path: string) {
+  try {
+    await Deno.stat(path);
+    return true;
+  } catch (error) {
+    if (error instanceof Deno.errors.NotFound) {
+      return false;
+    }
+    throw error;
+  }
+}
+
 export type ExtendWalkOptions = { log?: boolean; size?: boolean };
 
 type WalkFindMayBeCacheDirsOptions = WalkOptions & ExtendWalkOptions;

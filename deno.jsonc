@@ -1,7 +1,7 @@
 {
 	"tasks": {
-		"clear": "deno run src/clear.ts",
 		"test": "deno test --allow-env --allow-read",
-		"look": "deno run --allow-env --allow-read --allow-write src/look.ts"
+		"look": "deno run --allow-env --allow-read --allow-write src/look.ts",
+		"clear": "deno run --allow-env --allow-read --allow-write src/clear.ts"
 	}
 }
