@@ -1,6 +1,12 @@
 {
 	"tasks": {
-		"show": "deno run src/show.ts",
-		"clear": "deno run src/clear.ts"
+		"clear": "deno run src/clear.ts",
+		"test": "deno test --allow-env --allow-read",
+		"look": "deno run --allow-env --allow-read src/look.ts"
+	},
+	"lint": {
+		"rules": {
+			"exclude": ["no-unused-vars"]
+		}
 	}
 }

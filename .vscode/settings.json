@@ -3,7 +3,7 @@
 	// "deno.enablePaths": [],
 	"json.schemas": [
 		{
-			"url": "https://deno.land/x/deno@v1.28.3/cli/schemas/config-file.v1.json",
+			"url": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
 			"fileMatch": ["deno.json", "deno.jsonc"]
 		}
 	]
