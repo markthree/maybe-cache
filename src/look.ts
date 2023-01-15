@@ -2,7 +2,7 @@ import { TEMP_CACHE } from "./constant.ts";
 import { findkHomeAppDataDir } from "./path.ts";
 import { walkFindMayBeCacheDirs } from "./fs.ts";
 import type { ExtendWalkOptions, IDir } from "./fs.ts";
-import { ensureDir } from "https://deno.land/std@0.172.0/fs/ensure_dir.ts";
+import { ensureFile } from "https://deno.land/std@0.172.0/fs/mod.ts";
 import { prettyBytes } from "https://deno.land/x/pretty_bytes@v2.0.0/mod.ts";
 import {
   brightYellow,
@@ -47,8 +47,9 @@ if (import.meta.main) {
 
     console.log();
 
-    if (confirm(`🤕 生成 ${brightYellow("临时文件")} 吗? `)) {
-      ensureDir("temp");
+    if (confirm(`🤕 需要生成${brightYellow("临时文件")}吗? `)) {
+      await ensureFile(TEMP_CACHE);
+
       const cache = { total, list: dirs };
       await Deno.writeTextFile(TEMP_CACHE, JSON.stringify(cache, null, 2));
 
