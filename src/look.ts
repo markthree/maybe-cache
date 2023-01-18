@@ -20,7 +20,7 @@ export function lookMayBeCacheDirs(
     size,
     includeFiles: false,
     match: [/(cache|updater|temp)$/i],
-    skip: [/(ElevatedDiagnostics)$/],
+    skip: [/(ElevatedDiagnostics)$/, /npm/, /fnm/],
   });
 }
 
