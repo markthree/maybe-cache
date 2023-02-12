@@ -20,7 +20,7 @@ export function lookMayBeCacheDirs(
     size,
     includeFiles: false,
     match: [/(cache|updater|temp)$/i],
-    skip: [/(ElevatedDiagnostics)$/, /npm/, /fnm/],
+    skip: [/(ElevatedDiagnostics)$/, /npm/],
   });
 }
 
@@ -47,11 +47,16 @@ export async function look() {
 
     console.log();
 
-    if (confirm(`🤕 需要生成${brightYellow("临时文件")}吗? `)) {
+    if (
+      confirm(`🤕 需要生成${brightYellow("临时文件")}吗? `)
+    ) {
       await ensureFile(TEMP_CACHE);
 
       const cache = { total, list: dirs };
-      await Deno.writeTextFile(TEMP_CACHE, JSON.stringify(cache, null, 2));
+      await Deno.writeTextFile(
+        TEMP_CACHE,
+        JSON.stringify(cache, null, 2),
+      );
 
       console.log();
 
@@ -84,7 +89,9 @@ export function createTotal(dirs: IDir[]) {
 }
 
 export function normalizeTotalString(total: ITotal) {
-  return JSON.stringify(total).replace(/[{}'"]/g, "").replace(/,/g, " ");
+  return JSON.stringify(total)
+    .replace(/[{}'"]/g, "")
+    .replace(/,/g, " ");
 }
 
 if (import.meta.main) {
